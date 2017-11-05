@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010">
+  <TalendMetadata:GenericSchemaConnection xmi:id="_FApxcG7uEee9IsSdNV3gVg" comment="connectionComment" label="connectionLabel" dataPackage="_FApxcW7uEee9IsSdNV3gVg"/>
+  <TalendMetadata:GenericPackage xmi:id="_FApxcW7uEee9IsSdNV3gVg" dataManager="_FApxcG7uEee9IsSdNV3gVg">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_FApxcm7uEee9IsSdNV3gVg" id="_JqPoEJ7YEee8TJChsX-VNg" label="metadata_sem_uorg">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxc27uEee9IsSdNV3gVg" name="Id_SERVIDOR_PORTAL" id="5407" label="Id_SERVIDOR_PORTAL" length="10" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxdG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxdW7uEee9IsSdNV3gVg" name="NOME" id="5408" label="NOME" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxdm7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxd27uEee9IsSdNV3gVg" name="CPF" id="5409" label="CPF" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxeG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxeW7uEee9IsSdNV3gVg" name="MATRICULA" id="5410" label="MATRICULA" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxem7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxe27uEee9IsSdNV3gVg" name="DESCRICAO_CARGO" id="5411" label="DESCRICAO_CARGO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxfG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxfW7uEee9IsSdNV3gVg" name="CLASSE_CARGO" id="5412" label="CLASSE_CARGO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxfm7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxf27uEee9IsSdNV3gVg" name="REFERENCIA_CARGO" id="5413" label="REFERENCIA_CARGO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxgG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxgW7uEee9IsSdNV3gVg" name="PADRAO_CARGO" id="5414" label="PADRAO_CARGO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxgm7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxg27uEee9IsSdNV3gVg" name="NIVEL_CARGO" id="5415" label="NIVEL_CARGO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxhG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxhW7uEee9IsSdNV3gVg" name="SIGLA_FUNCAO" id="5416" label="SIGLA_FUNCAO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxhm7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxh27uEee9IsSdNV3gVg" name="NIVEL_FUNCAO" id="5417" label="NIVEL_FUNCAO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxiG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxiW7uEee9IsSdNV3gVg" name="FUNCAO" id="5418" label="FUNCAO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxim7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxi27uEee9IsSdNV3gVg" name="CODIGO_ATIVIDADE" id="5419" label="CODIGO_ATIVIDADE" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxjG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxjW7uEee9IsSdNV3gVg" name="ATIVIDADE" id="5420" label="ATIVIDADE" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxjm7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxkW7uEee9IsSdNV3gVg" name="COD_ORG_LOTACAO" id="5424" label="COD_ORG_LOTACAO" length="10" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxkm7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxk27uEee9IsSdNV3gVg" name="ORG_LOTACAO" id="5425" label="ORG_LOTACAO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxlG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_GtUHcJ7ZEee8TJChsX-VNg" name="COD_ORG_EXERCICIO" label="COD_ORG_EXERCICIO" length="10" talendType="id_Integer"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxo27uEee9IsSdNV3gVg" name="TIPO_VINCULO" id="5434" label="TIPO_VINCULO" length="10" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxpG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxpW7uEee9IsSdNV3gVg" name="SITUACAO_VINCULO" id="5435" label="SITUACAO_VINCULO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxpm7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxp27uEee9IsSdNV3gVg" name="DATA_INICIO_AFASTAMENTO" id="5436" label="DATA_INICIO_AFASTAMENTO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxqG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxqW7uEee9IsSdNV3gVg" name="DATA_TERMINO_AFASTAMENTO" id="5437" label="DATA_TERMINO_AFASTAMENTO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxqm7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxq27uEee9IsSdNV3gVg" name="REGIME_JURIDICO" id="5438" label="REGIME_JURIDICO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxrG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxrW7uEee9IsSdNV3gVg" name="JORNADA_DE_TRABALHO" id="5439" label="JORNADA_DE_TRABALHO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxrm7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxr27uEee9IsSdNV3gVg" name="DATA_INGRESSO_CARGOFUNCAO" id="5440" label="DATA_INGRESSO_CARGOFUNCAO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxsG7uEee9IsSdNV3gVg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_FApxs27uEee9IsSdNV3gVg" name="DATA_INGRESSO_ORGAO" id="5442" label="DATA_INGRESSO_ORGAO" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_FApxtG7uEee9IsSdNV3gVg"/>
+      </feature>
+    </ownedElement>
+  </TalendMetadata:GenericPackage>
+</xmi:XMI>

@@ -1,0 +1,135 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix org: <http://www.w3.org/ns/org#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix owlTime: <http://www.w3.org/2006/time#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix pso: <http://purl.org/pso/ns/>.
+
+<#OrgMap>
+    rr:logicalTable [ rr:tableName "cadastro_org" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/pso/formalorganization/{id_org}";
+        rr:class org:FormalOrganization;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate skos:prefLabel;
+        rr:objectMap [ rr:column "nome" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate org:identifier;
+        rr:objectMap [ rr:column "id_org" ];
+    ];
+.
+
+<#PersonMap>
+    rr:logicalTable [ rr:tableName "cadastro_pessoa" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/pso/person/{id_pessoa}";
+        rr:class foaf:Person;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate foaf:name;
+        rr:objectMap [ rr:column "nome" ];
+    ];
+.
+
+<#PostMap>
+rr:logicalTable [ rr:tableName "cadastro_atividade" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/pso/post/{id_atividade}";
+        rr:class org:Post;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate skos:notation;
+        rr:objectMap [ rr:column "id_atividade" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate skos:prefLabel;
+        rr:objectMap [ rr:column "descricao" ];
+    ];
+.
+
+<#IntervalMap>
+rr:logicalTable [ rr:tableName "cadastro_intervalo" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/pso/interval/{id_intervalo}";
+        rr:class owlTime:Interval;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate owlTime:hasBeginning;
+        rr:objectMap [ rr:column "inicio" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate owlTime:hasEnd;
+        rr:objectMap [ rr:column "fim" ];
+    ];
+.
+
+
+<#RoleMap>
+rr:logicalTable [ rr:tableName "cadastro_cargo" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/pso/role/{id_cargo}";
+        rr:class org:Role;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate skos:notation;
+        rr:objectMap [ rr:column "id_cargo" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate skos:prefLabel;
+        rr:objectMap [ rr:column "descricao" ];
+    ];
+.
+
+<#MembershipMap>
+    rr:logicalTable [ rr:sqlQuery """
+
+        SELECT csl.*, 
+        (CASE jornada_trabalho
+            WHEN '12 HORAS SEMANAIS' THEN '12hours'
+            WHEN '20 HORAS SEMANAIS' THEN '20hours'
+            WHEN '24 HORAS SEMANAIS' THEN '24hours'
+            WHEN '25 HORAS SEMANAIS' THEN '25hours'
+            WHEN '30 HORAS SEMANAIS' THEN '30hours'
+            WHEN '36 HORAS SEMANAIS' THEN '36hours'
+            WHEN '40 HORAS SEMANAIS' THEN '40hours'
+            WHEN 'DEDICACAO EXCLUSIVA' THEN 'exclusiveDedication'
+        END) weekly_hours,
+	(CASE regime_juridico
+	    WHEN 'REGIME JURIDICO UNICO' THEN 'singleLegalRegime'
+	    WHEN 'CONTRATO TEMPORARIO' THEN 'temporaryContract'
+	END) legal_regime
+	FROM cadastro_servidor_lotacao AS csl
+        """ ];
+
+    rr:subjectMap [
+      rr:template "http://purl.org/pso/membership/{id_pessoa}-{matricula_reduzida}-{id_cargo}-{id_org}";
+      rr:class org:Membership;
+    ];
+    rr:predicateObjectMap [
+      rr:predicate pso:legalRegime;
+      rr:objectMap [ rr:column "legal_regime" ];
+    ];
+    rr:predicateObjectMap [
+      rr:predicate pso:weeklyHours;
+      rr:objectMap [ rr:column "weekly_hours" ];
+    ];
+    rr:predicateObjectMap [
+      rr:predicate org:heldBy;
+      rr:objectMap [ rr:template "http://purl.org/pso/person/{id_pessoa}" ];
+    ];
+    rr:predicateObjectMap [
+      rr:predicate org:organization;
+      rr:objectMap [ rr:template "http://purl.org/pso/formalorganization/{id_org}" ];
+    ];
+    rr:predicateObjectMap [
+      rr:predicate org:role;
+      rr:objectMap [ rr:template "http://purl.org/pso/role/{id_cargo}" ];
+    ];
+    rr:predicateObjectMap [
+      rr:predicate pso:memberDuring;
+      rr:objectMap [ rr:template "http://purl.org/pso/interval/{id_intervalo}" ];
+    ];
+.

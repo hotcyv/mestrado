@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="__27aQJ7fEee8TJChsX-VNg" name="afastamentos" dataPackage="__27aQZ7fEee8TJChsX-VNg" Server="Localhost 127.0.0.1" FilePath="/home/victor/Downloads/Mestrado/PortalTransparencia/Servidores/csv/201505_Servidores/20150531_Afastamentos.csv" Encoding="windows-1252" FieldSeparatorValue="&quot;\t&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="1" FirstLineCaption="true" FieldSeparatorType="Tabulation"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="__27aQZ7fEee8TJChsX-VNg" name="default" dataManager="__27aQJ7fEee8TJChsX-VNg">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="__27aQp7fEee8TJChsX-VNg" id="_qQyYQJ7fEee8TJChsX-VNg" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__27aQ57fEee8TJChsX-VNg" label="ANO" length="10" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__27aRJ7fEee8TJChsX-VNg" label="MES" length="10" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__27aRZ7fEee8TJChsX-VNg" label="ID_SERVIDOR_PORTAL" length="10" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__27aRp7fEee8TJChsX-VNg" label="CPF" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__27aR57fEee8TJChsX-VNg" label="NOME" length="255" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__27aSJ7fEee8TJChsX-VNg" label="DATA_INICIO_AFASTAMENTO" length="20" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="__27aSZ7fEee8TJChsX-VNg" label="DATA_FIM_AFASTAMENTO" length="20" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>
