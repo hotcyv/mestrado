@@ -5,10 +5,10 @@
     <contextParameter comment="" name="MYSQL_PORT" prompt="MYSQL_PORT?" promptNeeded="false" type="id_String" value=""/>
     <contextParameter comment="" name="MYSQL_DATABASE" prompt="MYSQL_DATABASE?" promptNeeded="false" type="id_String" value=""/>
     <contextParameter comment="" name="MYSQL_USER" prompt="MYSQL_USER?" promptNeeded="false" type="id_String" value=""/>
-    <contextParameter comment="" name="MYSQL_USER_PASS" prompt="MYSQL_USER_PASS?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="MYSQL_PASSWORD" prompt="MYSQL_PASSWORD?" promptNeeded="false" type="id_String" value=""/>
     <contextParameter comment="" name="CONFIG_FILE" prompt="CONFIG_FILE?" promptNeeded="true" type="id_String" value=""/>
     <contextParameter comment="" name="CSV_FOLDER" prompt="CSV_FOLDER?" promptNeeded="false" type="id_String" value=""/>
-    <contextParameter comment="" name="IFS" prompt="IFS?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="ORGS_ID" prompt="ORGS_ID?" promptNeeded="false" type="id_String" value=""/>
   </context>
   <parameters>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true" show="false"/>
@@ -144,7 +144,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
-    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="subjob_org_import_lotacao"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="child_job"/>
     <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
     <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_t9mcgIs8Eeej2uAvNOgi2Q"/>
     <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
@@ -168,7 +168,9 @@
       <elementValue elementRef="PARAM_NAME_COLUMN" value="user"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.MYSQL_USER"/>
       <elementValue elementRef="PARAM_NAME_COLUMN" value="password"/>
-      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.MYSQL_USER_PASS"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.MYSQL_PASSWORD"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="if_id"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.ORGS_ID"/>
     </elementParameter>
     <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false" show="false"/>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>

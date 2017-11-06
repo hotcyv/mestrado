@@ -139,9 +139,9 @@ public class parent_job implements TalendJob {
 				
 			}
 			
-			if(MYSQL_USER_PASS != null){
+			if(MYSQL_PASSWORD != null){
 				
-					this.setProperty("MYSQL_USER_PASS", MYSQL_USER_PASS.toString());
+					this.setProperty("MYSQL_PASSWORD", MYSQL_PASSWORD.toString());
 				
 			}
 			
@@ -157,9 +157,9 @@ public class parent_job implements TalendJob {
 				
 			}
 			
-			if(IFS != null){
+			if(ORGS_ID != null){
 				
-					this.setProperty("IFS", IFS.toString());
+					this.setProperty("ORGS_ID", ORGS_ID.toString());
 				
 			}
 			
@@ -181,9 +181,9 @@ public String MYSQL_USER;
 public String getMYSQL_USER(){
 	return this.MYSQL_USER;
 }
-public String MYSQL_USER_PASS;
-public String getMYSQL_USER_PASS(){
-	return this.MYSQL_USER_PASS;
+public String MYSQL_PASSWORD;
+public String getMYSQL_PASSWORD(){
+	return this.MYSQL_PASSWORD;
 }
 public String CONFIG_FILE;
 public String getCONFIG_FILE(){
@@ -193,9 +193,9 @@ public String CSV_FOLDER;
 public String getCSV_FOLDER(){
 	return this.CSV_FOLDER;
 }
-public String IFS;
-public String getIFS(){
-	return this.IFS;
+public String ORGS_ID;
+public String getORGS_ID(){
+	return this.ORGS_ID;
 }
 	}
 	private ContextProperties context = new ContextProperties();
@@ -800,9 +800,9 @@ if(row1 != null) {
            context.MYSQL_USER=value_tContextLoad_1;
         }
 
-        if(key_tContextLoad_1!=null && "MYSQL_USER_PASS".equals(key_tContextLoad_1))
+        if(key_tContextLoad_1!=null && "MYSQL_PASSWORD".equals(key_tContextLoad_1))
         {
-           context.MYSQL_USER_PASS=value_tContextLoad_1;
+           context.MYSQL_PASSWORD=value_tContextLoad_1;
         }
 
         if(key_tContextLoad_1!=null && "CONFIG_FILE".equals(key_tContextLoad_1))
@@ -815,9 +815,9 @@ if(row1 != null) {
            context.CSV_FOLDER=value_tContextLoad_1;
         }
 
-        if(key_tContextLoad_1!=null && "IFS".equals(key_tContextLoad_1))
+        if(key_tContextLoad_1!=null && "ORGS_ID".equals(key_tContextLoad_1))
         {
-           context.IFS=value_tContextLoad_1;
+           context.ORGS_ID=value_tContextLoad_1;
         }
 
 
@@ -1432,7 +1432,7 @@ class DealChildJobLibrary_tRunJob_1 {
 		
 		parentContextMap_tRunJob_1.put("user", obj_tRunJob_1);
 	
-		obj_tRunJob_1 = context.MYSQL_USER_PASS;
+		obj_tRunJob_1 = context.MYSQL_PASSWORD;
 		if(obj_tRunJob_1!=null) {
 			paraList_tRunJob_1.add("--context_param password=" + RuntimeUtils.tRunJobConvertContext(obj_tRunJob_1));
 		} else {
@@ -1440,6 +1440,15 @@ class DealChildJobLibrary_tRunJob_1 {
 		}
 		
 		parentContextMap_tRunJob_1.put("password", obj_tRunJob_1);
+	
+		obj_tRunJob_1 = context.ORGS_ID;
+		if(obj_tRunJob_1!=null) {
+			paraList_tRunJob_1.add("--context_param if_id=" + RuntimeUtils.tRunJobConvertContext(obj_tRunJob_1));
+		} else {
+			paraList_tRunJob_1.add("--context_param if_id=" + NULL_VALUE_EXPRESSION_IN_COMMAND_STRING_FOR_CHILD_JOB_ONLY);
+		}
+		
+		parentContextMap_tRunJob_1.put("if_id", obj_tRunJob_1);
 	
 	
 		Runtime runtime_tRunJob_1 = Runtime.getRuntime();
@@ -1800,18 +1809,18 @@ end_Hash.put("tFileList_1", System.currentTimeMillis());
 				    context.setContextType("MYSQL_USER", "id_String");
 				
                 context.MYSQL_USER=(String) context.getProperty("MYSQL_USER");
-				    context.setContextType("MYSQL_USER_PASS", "id_String");
+				    context.setContextType("MYSQL_PASSWORD", "id_String");
 				
-                context.MYSQL_USER_PASS=(String) context.getProperty("MYSQL_USER_PASS");
+                context.MYSQL_PASSWORD=(String) context.getProperty("MYSQL_PASSWORD");
 				    context.setContextType("CONFIG_FILE", "id_String");
 				
                 context.CONFIG_FILE=(String) context.getProperty("CONFIG_FILE");
 				    context.setContextType("CSV_FOLDER", "id_String");
 				
                 context.CSV_FOLDER=(String) context.getProperty("CSV_FOLDER");
-				    context.setContextType("IFS", "id_String");
+				    context.setContextType("ORGS_ID", "id_String");
 				
-                context.IFS=(String) context.getProperty("IFS");
+                context.ORGS_ID=(String) context.getProperty("ORGS_ID");
         } catch (java.io.IOException ie) {
             System.err.println("Could not load context "+contextStr);
             ie.printStackTrace();
@@ -1827,14 +1836,14 @@ end_Hash.put("tFileList_1", System.currentTimeMillis());
                 context.MYSQL_DATABASE = (String) parentContextMap.get("MYSQL_DATABASE");
             }if (parentContextMap.containsKey("MYSQL_USER")) {
                 context.MYSQL_USER = (String) parentContextMap.get("MYSQL_USER");
-            }if (parentContextMap.containsKey("MYSQL_USER_PASS")) {
-                context.MYSQL_USER_PASS = (String) parentContextMap.get("MYSQL_USER_PASS");
+            }if (parentContextMap.containsKey("MYSQL_PASSWORD")) {
+                context.MYSQL_PASSWORD = (String) parentContextMap.get("MYSQL_PASSWORD");
             }if (parentContextMap.containsKey("CONFIG_FILE")) {
                 context.CONFIG_FILE = (String) parentContextMap.get("CONFIG_FILE");
             }if (parentContextMap.containsKey("CSV_FOLDER")) {
                 context.CSV_FOLDER = (String) parentContextMap.get("CSV_FOLDER");
-            }if (parentContextMap.containsKey("IFS")) {
-                context.IFS = (String) parentContextMap.get("IFS");
+            }if (parentContextMap.containsKey("ORGS_ID")) {
+                context.ORGS_ID = (String) parentContextMap.get("ORGS_ID");
             }
         }
 
@@ -2063,6 +2072,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     57582 characters generated by Talend Open Studio for Data Integration 
- *     on the 5 de Novembro de 2017 11h59min43s BRST
+ *     57983 characters generated by Talend Open Studio for Data Integration 
+ *     on the 6 de Novembro de 2017 16h38min9s BRST
  ************************************************************************************************/
