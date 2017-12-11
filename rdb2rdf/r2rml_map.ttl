@@ -2,14 +2,16 @@
 @prefix org: <http://www.w3.org/ns/org#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix owlTime: <http://www.w3.org/2006/time#>.
+@prefix time: <http://www.w3.org/2006/time#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema> .
-@prefix pso: <http://purl.org/pso/ns/>.
+@prefix pso: <http://purl.org/publicservant/ontology/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
 
 <#OrgMap>
     rr:logicalTable [ rr:tableName "cadastro_org" ];
     rr:subjectMap [
-        rr:template "http://purl.org/pso/formalorganization/{id_org}";
+        rr:template "http://purl.org/publicservant/resource/FormalOrganization/{id_org}";
         rr:class org:FormalOrganization;
     ];
     rr:predicateObjectMap [
@@ -20,12 +22,40 @@
         rr:predicate org:identifier;
         rr:objectMap [ rr:column "id_org" ];
     ];
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [ rr:template "http://orcamento.dados.gov.br/id/2016/UnidadeOrcamentaria/{id_org}"];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [ rr:template "http://orcamento.dados.gov.br/id/2015/UnidadeOrcamentaria/{id_org}"];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [ rr:template "http://orcamento.dados.gov.br/id/2014/UnidadeOrcamentaria/{id_org}"];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [ rr:template "http://orcamento.dados.gov.br/id/2013/UnidadeOrcamentaria/{id_org}"];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [ rr:template "http://orcamento.dados.gov.br/id/2012/UnidadeOrcamentaria/{id_org}"];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [ rr:template "http://orcamento.dados.gov.br/id/2011/UnidadeOrcamentaria/{id_org}"];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [ rr:template "http://orcamento.dados.gov.br/id/2010/UnidadeOrcamentaria/{id_org}"];
+    ];
 .
 
 <#PersonMap>
     rr:logicalTable [ rr:tableName "cadastro_pessoa" ];
     rr:subjectMap [
-        rr:template "http://purl.org/pso/person/{id_pessoa}";
+        rr:template "http://purl.org/publicservant/resource/Person/{id_pessoa}";
         rr:class foaf:Person;
     ];
     rr:predicateObjectMap [
@@ -37,40 +67,67 @@
 <#PostMap>
 rr:logicalTable [ rr:tableName "cadastro_atividade" ];
     rr:subjectMap [
-        rr:template "http://purl.org/pso/post/{id_atividade}";
+        rr:template "http://purl.org/publicservant/resource/Post/{id_atividade}";
         rr:class org:Post;
-    ];
-    rr:predicateObjectMap [
-        rr:predicate skos:notation;
-        rr:objectMap [ rr:column "id_atividade" ];
     ];
     rr:predicateObjectMap [
         rr:predicate skos:prefLabel;
         rr:objectMap [ rr:column "descricao" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate org:postIn;
+        rr:objectMap [ rr:template "http://purl.org/publicservant/resource/FormalOrganization/{id_org}"];
+    ];
+.
+
+<#BonusMap>
+rr:logicalTable [ rr:sqlQuery """
+		SELECT cf.id_funcao, CONCAT(cf.id_funcao, ' - ',cf.descricao) AS descricao_completa 
+		FROM cadastro_funcao AS cf
+        	""" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/publicservant/resource/Bonus/{id_funcao}";
+        rr:class pso:Bonus;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate skos:prefLabel;
+        rr:objectMap [ rr:column "descricao_completa" ];
     ];
 .
 
 <#IntervalMap>
 rr:logicalTable [ rr:tableName "cadastro_intervalo" ];
     rr:subjectMap [
-        rr:template "http://purl.org/pso/interval/{id_intervalo}";
-        rr:class owlTime:Interval;
+        rr:template "http://purl.org/publicservant/resource/Interval/{id_intervalo}";
+        rr:class time:Interval;
     ];
     rr:predicateObjectMap [
-        rr:predicate owlTime:hasBeginning;
+        rr:predicate time:hasBeginning;
         rr:objectMap [ rr:column "inicio" ];
     ];
     rr:predicateObjectMap [
-        rr:predicate owlTime:hasEnd;
+        rr:predicate time:hasEnd;
         rr:objectMap [ rr:column "fim" ];
     ];
 .
 
+<#InstantMap>
+rr:logicalTable [ rr:sqlQuery """
+		SELECT DISTINCT data_remuneracao FROM cadastro_remuneracao
+        	""" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/publicservant/resource/Instant/{data_remuneracao}";
+        rr:class time:Interval;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate time:inXSDDateTime;
+        rr:objectMap [ rr:column "data_remuneracao" ];
+    ];
 
 <#RoleMap>
 rr:logicalTable [ rr:tableName "cadastro_cargo" ];
     rr:subjectMap [
-        rr:template "http://purl.org/pso/role/{id_cargo}";
+        rr:template "http://purl.org/publicservant/resource/Role/{id_cargo}";
         rr:class org:Role;
     ];
     rr:predicateObjectMap [
@@ -83,9 +140,49 @@ rr:logicalTable [ rr:tableName "cadastro_cargo" ];
     ];
 .
 
+
+<#WorkLeaveMap>
+rr:logicalTable [ rr:tableName "cadastro_afastamento" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/publicservant/resource/WorkLeave/{id_pessoa}-{id_intervalo}";
+        rr:class pso:Workleave;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate pso:workleaveOf;
+        rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Membership/{id_lotacao}"];
+    ];
+    rr:predicateObjectMap [
+      rr:predicate pso:leavesDuring;
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Interval/{id_intervalo}" ];
+    ];
+.
+
+<#MandateMap>
+rr:logicalTable [ rr:tableName "cadastro_servidor_funcao" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/publicservant/resource/mandate/{id_pessoa}-{id_atividade}-{id_intervalo}";
+        rr:class pso:Mandate;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate pso:mandateOf;
+        rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Membership/{id_lotacao}"];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate pso:hasPost;
+        rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Post/{id_org}-{id_atividade}"];
+    ];
+    rr:predicateObjectMap [
+      rr:predicate pso:holdsDuring;
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Interval/{id_intervalo}" ];
+    ];
+    rr:predicateObjectMap [
+      rr:predicate pso:hasBonus;
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Bonus/{id_funcao}" ];
+    ];
+.
+
 <#MembershipMap>
     rr:logicalTable [ rr:sqlQuery """
-
         SELECT csl.*, 
         (CASE jornada_trabalho
             WHEN '12 HORAS SEMANAIS' THEN '12hours'
@@ -96,40 +193,68 @@ rr:logicalTable [ rr:tableName "cadastro_cargo" ];
             WHEN '36 HORAS SEMANAIS' THEN '36hours'
             WHEN '40 HORAS SEMANAIS' THEN '40hours'
             WHEN 'DEDICACAO EXCLUSIVA' THEN 'exclusiveDedication'
-        END) weekly_hours,
+        END) weekly_working_hours,
 	(CASE regime_juridico
 	    WHEN 'REGIME JURIDICO UNICO' THEN 'singleLegalRegime'
 	    WHEN 'CONTRATO TEMPORARIO' THEN 'temporaryContract'
-	END) legal_regime
+	END) legal_regime,
+        (CASE carreira
+	    WHEN 'DOCENTE' THEN 'faculty'
+	    WHEN 'TAE' THEN 'administrativeTechnician'
+	END) career
 	FROM cadastro_servidor_lotacao AS csl
         """ ];
 
     rr:subjectMap [
-      rr:template "http://purl.org/pso/membership/{id_pessoa}-{matricula_reduzida}-{id_cargo}-{id_org}";
+      rr:template "http://purl.org/publicservant/resource/Membership/{id_pessoa}-{matricula_reduzida}-{id_org}";
       rr:class org:Membership;
     ];
     rr:predicateObjectMap [
       rr:predicate pso:legalRegime;
-      rr:objectMap [ rr:column "legal_regime" ];
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Concept/{legal_regime}" ];
     ];
     rr:predicateObjectMap [
-      rr:predicate pso:weeklyHours;
-      rr:objectMap [ rr:column "weekly_hours" ];
+      rr:predicate pso:career;
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Concept/{carreira}" ];
     ];
     rr:predicateObjectMap [
-      rr:predicate org:heldBy;
-      rr:objectMap [ rr:template "http://purl.org/pso/person/{id_pessoa}" ];
+      rr:predicate pso:weeklyWorkingHours;
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Concept/{weekly_working_hours}" ];
+    ];
+    rr:predicateObjectMap [
+      rr:predicate org:member;
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Person/{id_pessoa}" ];
     ];
     rr:predicateObjectMap [
       rr:predicate org:organization;
-      rr:objectMap [ rr:template "http://purl.org/pso/formalorganization/{id_org}" ];
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/FormalOrganization/{id_org}" ];
     ];
     rr:predicateObjectMap [
       rr:predicate org:role;
-      rr:objectMap [ rr:template "http://purl.org/pso/role/{id_cargo}" ];
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Role/{id_cargo}" ];
     ];
     rr:predicateObjectMap [
-      rr:predicate pso:memberDuring;
-      rr:objectMap [ rr:template "http://purl.org/pso/interval/{id_intervalo}" ];
+      rr:predicate org:memberDuring;
+      rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Interval/{id_intervalo}" ];
     ];
 .
+<#RemunerationMap>
+    rr:logicalTable [ rr:tableName "cadastro_remuneracao" ];
+    rr:subjectMap [
+        rr:template "http://purl.org/publicservant/resource/Remuneration/{id_pessoa}-{data_remuneracao}";
+        rr:class pso:Remuneration;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate pso:remunerationOf;
+        rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Membership/{id_pessoa}-{matricula_reduzida}-{id_org}"];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate pso:baseRemuneration;
+        rr:objectMap [ rr:column "remuneracao_basica_bruta" ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate pso:receivedIn;
+        rr:objectMap [ rr:template "http://purl.org/publicservant/resource/Instant/{data_remuneracao}"];
+    ];
+.
+
